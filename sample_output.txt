@@ -1,0 +1,78 @@
+#----------------------------------------------------------------------
+GET http://localhost:7070/api/aws/regions  
+#----------------------------------------------------------------------
+[
+    {
+        "id": 1001,
+        "name": "US East (Ohio)",
+        "region": "us-east-2",
+        "endpoint": "ec2.us-east-2.amazonaws.com"
+    },
+    {
+        "id": 1002,
+        "name": "US East (N. Virginia)",
+        "region": "us-east-1",
+        "endpoint": "ec2.us-east-1.amazonaws.com"
+    },
+    {
+        "id": 1003,
+        "name": "US West (N. California)",
+        "region": "us-west-1",
+        "endpoint": "ec2.us-west-1.amazonaws.com"
+    }
+]
+#----------------------------------------------------------------------
+GET http://localhost:7070/api/aws/region/1001
+#----------------------------------------------------------------------
+{
+    "id": 1001,
+    "name": "US East (Ohio)",
+    "region": "us-east-2",
+    "endpoint": "ec2.us-east-2.amazonaws.com"
+}
+#----------------------------------------------------------------------
+GET http://localhost:7070/api/aws/region/us-east-wil-campos
+#----------------------------------------------------------------------
+{
+    "id": 1016,
+    "name": "Wil Campos",
+    "region": "us-east-wil-campos",
+    "endpoint": "ec2.us-wil-campos.amazonaws.com"
+}
+#----------------------------------------------------------------------
+POST http://localhost:7070/api/aws/region
+#----------------------------------------------------------------------
+POST JSON
+{
+    "name": "US El Segundo (OFFICE)",
+    "region": "us-east-el-segundo",
+    "endpoint": "ec2.us-east-el-segundo.amazonaws.com"
+}
+RESPONSE JSON
+{
+    "id": 1016,
+    "name": "US El Segundo (OFFICE)",
+    "region": "us-east-el-segundo",
+    "endpoint": "ec2.us-east-el-segundo.amazonaws.com"
+}
+#----------------------------------------------------------------------
+PUT http://localhost:7070/api/aws/region/1016
+#----------------------------------------------------------------------
+PUT JSON
+{
+    "name": "Wil Campos",
+    "region": "us-east-wil-campos",
+    "endpoint": "ec2.us-wil-campos.amazonaws.com"
+}
+PUT RESPONSE
+{
+    "id": 1016,
+    "name": "Wil Campos",
+    "region": "us-east-wil-campos",
+    "endpoint": "ec2.us-wil-campos.amazonaws.com"
+}
+#----------------------------------------------------------------------
+DELETE http://localhost:7070/api/aws/region/1016
+#----------------------------------------------------------------------
+DELETE RESPONSE
+200 OK
